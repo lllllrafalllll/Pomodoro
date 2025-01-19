@@ -1,12 +1,13 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
+from settings import Settings
 
 
-# engine = create_engine("sqlite:///pomodoro.sqlite")
+settings = Settings() 
 
 
-engine = create_engine("postgresql+psycopg2://postgres:password@0.0.0.0:5432/pomodoro")
+engine = create_engine(settings.db_url)
 
 
 
