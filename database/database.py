@@ -1,18 +1,14 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-
-from settings import Settings
+from sqlalchemy.orm import  DeclarativeBase, declared_attr
+from typing import Any
 
 
-settings = Settings() 
+class Base(DeclarativeBase):
+    id: Any
+    __name__: str
 
 
-engine = create_engine(settings.db_url)
+    __allow__unmapped__ = True
 
-
-
-Session = sessionmaker(engine)
-
-
-def get_db_session() -> Session:
-    return Session
+    @declared_attr
+    def __tablename__(self) -> str:
+        return self.__name__.lower()

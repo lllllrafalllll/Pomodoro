@@ -1,7 +1,7 @@
 from typing import Annotated
 from fastapi import FastAPI, APIRouter, status, Depends
 # from pydantic import BaseModel
-from database.database import get_db_session
+from database import get_db_session
 # from fixtures import tasks as fixtures_tasks
 
 from dependecy import get_tasks_repository, get_tasks_cache_repository
